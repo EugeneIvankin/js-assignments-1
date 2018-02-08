@@ -213,6 +213,19 @@ function extractEmails(str) {
  *
  */
 function getRectangleString(width, height) {
+    let str = '';
+    for (let i=0; i<height; i++) {
+        if (i==0) {
+            str+="┌"+"─".repeat(width-2)+"┐"+"\n";
+        }
+        else if (i==(height-1)) {
+            str+="└"+"─".repeat(width-2)+"┘"+"\n";
+        }
+        else {
+            str+="│"+" ".repeat(width-2)+"│"+"\n";
+        }
+    }
+    return str;
     throw new Error('Not implemented');
 }
 
@@ -233,6 +246,13 @@ function getRectangleString(width, height) {
  *
  */
 function encodeToRot13(str) {
+    let alfavit = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz !?.";
+    let alfavitROT13 = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm !?.";
+    let strROT13 = "";
+    for (let i=0; i<str.length; i++){
+        strROT13 += alfavitROT13.charAt(alfavit.indexOf(str.charAt(i)));
+    }
+    return strROT13;
     throw new Error('Not implemented');
 }
 
@@ -286,6 +306,17 @@ function isString(value) {
  *   'K♠' => 51
  */
 function getCardId(value) {
+    let arrPlaingCards = [
+        'A♣','2♣','3♣','4♣','5♣','6♣','7♣','8♣','9♣','10♣','J♣','Q♣','K♣',
+        'A♦','2♦','3♦','4♦','5♦','6♦','7♦','8♦','9♦','10♦','J♦','Q♦','K♦',
+        'A♥','2♥','3♥','4♥','5♥','6♥','7♥','8♥','9♥','10♥','J♥','Q♥','K♥',
+        'A♠','2♠','3♠','4♠','5♠','6♠','7♠','8♠','9♠','10♠','J♠','Q♠','K♠'
+    ];
+    let number;
+    for (let i=0; i<arrPlaingCards.length; i++) {
+        if (arrPlaingCards[i]==value) number = i;
+    }
+    return number;
     throw new Error('Not implemented');
 }
 
