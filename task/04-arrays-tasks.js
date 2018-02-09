@@ -300,6 +300,7 @@ function getSecondItems(arr) {
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
  */
 function propagateItemsByPositionIndex(arr) {
+    
    throw new Error('Not implemented');
 }
 
@@ -337,6 +338,13 @@ function get3TopItems(arr) {
  *   [ 1, '2' ] => 1
  */
 function getPositivesCount(arr) {
+    let count = 0;
+    arr.map(elem => {
+        if (typeof elem == "number" && elem > 0) {
+            count++;
+        }
+    });
+    return count;
    throw new Error('Not implemented');
 }
  
@@ -465,6 +473,7 @@ function toStringList(arr) {
  *      { country: 'Russia',  city: 'Saint Petersburg' }
  */
 function sortCitiesArray(arr) {
+
    throw new Error('Not implemented');
 }
 
@@ -487,6 +496,13 @@ function sortCitiesArray(arr) {
  *           [0,0,0,0,1]]   
  */
 function getIdentityMatrix(n) {
+    const arrayColumn = Array(n).fill(0);
+    const arr = arrayColumn.map((elem,i) => {
+        const arrayRow = Array(n).fill(0);
+	    arrayRow[i]=1;
+	    return arrayRow;
+    });
+    return arr;
    throw new Error('Not implemented');
 }
 
@@ -525,6 +541,11 @@ function getIntervalArray(start, end) {
  *   [ 1, 1, 2, 2, 3, 3, 4, 4] => [ 1, 2, 3, 4]
  */
 function distinct(arr) {
+    let array = [];
+    arr.map(elem => {
+	    if (array.indexOf(elem) == -1) array.push(elem);	
+    });
+    return array;
    throw new Error('Not implemented');
 }
 

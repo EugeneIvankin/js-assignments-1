@@ -83,9 +83,14 @@ function isLeapYear(date) {
  *    Date(2000,1,1,10,0,0),  Date(2000,1,1,15,20,10,453)   => "05:20:10.453"
  */
 function timeSpanToString(startDate, endDate) {
-   let miliseconds = (endDate-startDate);
-   //return miliseconds;
-   throw new Error('Not implemented');
+//    let timeDuration = (endDate-startDate);
+//    let hours = Math.floor(timeDuration/3600000);
+//    let min = (timeDuration/60000) - hours*60;
+//    let seconds = (timeDuration/1000) - hours*3600;
+//    let miliseconds = timeDuration - hours*3600000; 
+//    let time = new Date(0,0,0,hours,min,seconds,miliseconds);
+//    return time.toTimeString();
+    throw new Error('Not implemented');
 }
 
 
@@ -103,17 +108,14 @@ function timeSpanToString(startDate, endDate) {
  *    Date.UTC(2016,3,5,21, 0) => Math.PI/2
  */
 function angleBetweenClockHands(date) {
-    let min = date.getMinutes();
-    let hours = date.getHours();
+    let min = date.getUTCMinutes();
+    let hours = date.getUTCHours();
     let radiansMin = 6*min;
     let radiansHours = 0.5*(60*hours+min)%360;
-    // if (radiansHours > 360) {
-    //     radiansHours = Math.floor(radiansHours/360);
-    // }
-    if ((Math.abs(radiansHours-radiansMin)*Math.PI/180) > 180){
-        return (Math.abs(radiansHours-radiansMin)*Math.PI/180) -180;
+    if ((Math.abs(radiansHours-radiansMin)) > 180){
+        return ((Math.abs(radiansHours-radiansMin)) -180)*Math.PI/180;
     }
-    return Math.abs(radiansHours-radiansMin)*Math.PI/180;
+    else return Math.abs(radiansHours-radiansMin)*Math.PI/180;
     throw new Error('Not implemented');
 }
 
