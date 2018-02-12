@@ -220,6 +220,12 @@ function getTail(arr, n) {
  *    +'30,31,32,33,34'
  */
 function toCsvText(arr) {
+    let str = "";
+    arr.map((elem, i) => {
+        if (i == arr.length-1) {str += elem} 
+        else {str += `${elem}\n`};
+    });
+    return str; 
    throw new Error('Not implemented');
 }
 
@@ -300,7 +306,11 @@ function getSecondItems(arr) {
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
  */
 function propagateItemsByPositionIndex(arr) {
-    
+    let array = [];
+    arr.map((elem, index) => {
+        console.log(array.concat(Array(index+1).fill(elem)));
+    });
+    console.log(array);
    throw new Error('Not implemented');
 }
 
@@ -473,7 +483,15 @@ function toStringList(arr) {
  *      { country: 'Russia',  city: 'Saint Petersburg' }
  */
 function sortCitiesArray(arr) {
-
+    return arr.sort((a, b) => {
+                if (a.country > b.country) return 1;
+                if (a.country < b.country) return -1;
+                })
+                .sort((a, b) => {
+                    if (a.country == b.country){
+                        if (a.city > b.city) return 1;
+                    }
+                });
    throw new Error('Not implemented');
 }
 
@@ -643,6 +661,12 @@ function getElementByIndexes(arr, indexes) {
  * 
  */
 function swapHeadAndTail(arr) {
+    let headArr = [];
+    let tailArr = [];
+    const partOflengthArr = Math.floor(arr.length/2);
+    headArr = arr.splice(0, partOflengthArr);
+    tailArr = arr.splice(-partOflengthArr);
+    return tailArr.concat(arr).concat(headArr);
     throw new Error('Not implemented');
 }
 
