@@ -184,8 +184,7 @@ function convertToUpperCase(str) {
  *   'info@gmail.com' => ['info@gmail.com']
  */
 function extractEmails(str) {
-    let arr = str.split(";");
-    return arr;
+    return str.split(";");
     throw new Error('Not implemented');
 }
 
@@ -306,15 +305,15 @@ function isString(value) {
  *   'K♠' => 51
  */
 function getCardId(value) {
-    let arrPlaingCards = [
+    let arrPlayingCards = [
         'A♣','2♣','3♣','4♣','5♣','6♣','7♣','8♣','9♣','10♣','J♣','Q♣','K♣',
         'A♦','2♦','3♦','4♦','5♦','6♦','7♦','8♦','9♦','10♦','J♦','Q♦','K♦',
         'A♥','2♥','3♥','4♥','5♥','6♥','7♥','8♥','9♥','10♥','J♥','Q♥','K♥',
         'A♠','2♠','3♠','4♠','5♠','6♠','7♠','8♠','9♠','10♠','J♠','Q♠','K♠'
     ];
     let number;
-    for (let i=0; i<arrPlaingCards.length; i++) {
-        if (arrPlaingCards[i]==value) number = i;
+    for (let i=0; i<arrPlayingCards.length; i++) {
+        if (arrPlayingCards[i]==value) number = i;
     }
     return number;
     throw new Error('Not implemented');

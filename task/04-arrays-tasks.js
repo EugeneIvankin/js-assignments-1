@@ -265,7 +265,7 @@ function getMovingSum(arr) {
    if (arr.length == 0) return sumArr;
    let sumOnStep = arr.reduce((sum, item) => {
        sumArr.push(sum);
-       return sum+item;
+       return sum + item;
    }); 
    sumArr.push(sumOnStep);
    return sumArr;
@@ -538,7 +538,8 @@ function getIdentityMatrix(n) {
  *     3, 3   => [ 3 ]
  */
 function getIntervalArray(start, end) {
-    let arr = Array(end-start+1).fill(1);
+    let arrLength = end-start+1;
+    let arr = Array(arrLength).fill(1);
     return arr.map((elem, i) => {
         let x = elem*start;
         start++;

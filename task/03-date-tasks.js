@@ -61,8 +61,8 @@ function isLeapYear(date) {
    let year = date.getFullYear();
    if (year % 4 !== 0) return false;
    else if (year % 100 !== 0) return true;
-   else if (year % 400 !== 0) return false
-   else return true; 
+   else if (year % 400 !== 0) return false;
+   return true; 
    throw new Error('Not implemented');
 }
 
@@ -108,14 +108,15 @@ function timeSpanToString(startDate, endDate) {
  *    Date.UTC(2016,3,5,21, 0) => Math.PI/2
  */
 function angleBetweenClockHands(date) {
-    let min = date.getUTCMinutes();
-    let hours = date.getUTCHours();
-    let radiansMin = 6*min;
-    let radiansHours = 0.5*(60*hours+min)%360;
-    if ((Math.abs(radiansHours-radiansMin)) > 180){
-        return ((Math.abs(radiansHours-radiansMin)) -180)*Math.PI/180;
+    const min = date.getUTCMinutes();
+    const hours = date.getUTCHours();
+    const radiansMin = 6 * min;
+    const radiansHours = 0.5 * (60 * hours + min) % 360;
+    const radiansBetweenHoursAndMin = Math.abs(radiansHours-radiansMin);
+    if (radiansBetweenHoursAndMin > 180) {
+        return (radiansBetweenHoursAndMin - 180) * Math.PI / 180;
     }
-    else return Math.abs(radiansHours-radiansMin)*Math.PI/180;
+    return radiansBetweenHoursAndMin * Math.PI / 180;
     throw new Error('Not implemented');
 }
 
