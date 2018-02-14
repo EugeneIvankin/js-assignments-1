@@ -62,9 +62,14 @@ function getJSON(obj) {
  *
  */
 function fromJSON(proto, json) {
-    let Obj = JSON.parse(json);
-    Obj.prototype = Object.create(proto);
-    return Obj;
+    var obj = JSON.parse(json);
+    function NewObj() {
+        for (let key in obj) {
+            this[key] = obj[key];
+        }
+    }
+    NewObj.prototype = proto;
+    return new NewObj
     throw new Error('Not implemented');
 }
 
@@ -118,7 +123,6 @@ function fromJSON(proto, json) {
  */
 
 const cssSelectorBuilder = {
-
     element: function(value) {
         throw new Error('Not implemented');
     },
