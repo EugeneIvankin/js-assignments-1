@@ -23,7 +23,6 @@
  */
 function getRectangleArea(width, height) {
     return width*height;
-    throw new Error('Not implemented');
 }
 
 
@@ -40,7 +39,6 @@ function getRectangleArea(width, height) {
  */
 function getCicleCircumference(radius) {
     return 2*Math.PI*radius;
-    throw new Error('Not implemented');
 }
 
 /**
@@ -56,8 +54,9 @@ function getCicleCircumference(radius) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
-    //return (value1+value2)/2;
-    throw new Error('Not implemented');
+    const sum = value1/2 + value2/2;
+    const average = sum;
+    return average;
 }
 
 /**
@@ -77,7 +76,6 @@ function getAverage(value1, value2) {
  */
 function getDistanceBetweenPoints(x1, y1, x2, y2) {
     return Math.hypot((x2-x1),(y2-y1));
-    throw new Error('Not implemented');
 }
 
 /**
@@ -94,7 +92,6 @@ function getDistanceBetweenPoints(x1, y1, x2, y2) {
  */
 function getLinearEquationRoot(a, b) {
     return -b/a;
-    throw new Error('Not implemented');
 }
 
 
@@ -122,7 +119,6 @@ function getAngleBetweenVectors(x1, y1, x2, y2) {
     const m_ab = ma * mb;
     const rez = ab / m_ab;
     return Math.acos(rez);
-    throw new Error('Not implemented');
 }
 
 /**
@@ -139,7 +135,6 @@ function getAngleBetweenVectors(x1, y1, x2, y2) {
  */
 function getLastDigit(value) {
     return value%10;
-    throw new Error('Not implemented');
 }
 
 
@@ -156,7 +151,6 @@ function getLastDigit(value) {
  */
 function parseNumberFromString(value) {
     return +value;
-    throw new Error('Not implemented');
 }
 
 /**
@@ -174,7 +168,6 @@ function parseNumberFromString(value) {
  */
 function getParallelipidedDiagonal(a,b,c) {
     return Math.hypot(a,b,c);
-    throw new Error('Not implemented');
 }
 
 /**
@@ -197,7 +190,6 @@ function getParallelipidedDiagonal(a,b,c) {
 function roundToPowerOfTen(num, pow) {
     let powRound = Math.pow(10,pow);
     return Math.round(num / powRound) * powRound;
-    throw new Error('Not implemented');
 }
 
 /**
@@ -218,7 +210,10 @@ function roundToPowerOfTen(num, pow) {
  *   17 => true
  */
 function isPrime(n) {
-    throw new Error('Not implemented');
+    for (let i=2; i<n/2+1; i++){
+        if(n % i === 0) return false;
+    };
+    return true;
 }
 
 /**
@@ -240,7 +235,6 @@ function toNumber(value, def) {
     let number = Number(value);
     if (value == null || isNaN(number) ) return def;
     return number;
-    throw new Error('Not implemented');
 }
 
 module.exports = {

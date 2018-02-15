@@ -23,7 +23,6 @@
  */
 function parseDataFromRfc2822(value) {
    return new Date(value); 
-   throw new Error('Not implemented');
 }
 
 /**
@@ -39,7 +38,6 @@ function parseDataFromRfc2822(value) {
  */
 function parseDataFromIso8601(value) {
    return new Date(value); 
-   throw new Error('Not implemented');
 }
 
 
@@ -63,7 +61,6 @@ function isLeapYear(date) {
    else if (year % 100 !== 0) return true;
    else if (year % 400 !== 0) return false;
    return true; 
-   throw new Error('Not implemented');
 }
 
 
@@ -83,14 +80,15 @@ function isLeapYear(date) {
  *    Date(2000,1,1,10,0,0),  Date(2000,1,1,15,20,10,453)   => "05:20:10.453"
  */
 function timeSpanToString(startDate, endDate) {
-//    let timeDuration = (endDate-startDate);
-//    let hours = Math.floor(timeDuration/3600000);
-//    let min = (timeDuration/60000) - hours*60;
-//    let seconds = (timeDuration/1000) - hours*3600;
-//    let miliseconds = timeDuration - hours*3600000; 
-//    let time = new Date(0,0,0,hours,min,seconds,miliseconds);
-//    return time.toTimeString();
-    throw new Error('Not implemented');
+    let timeDuration = (endDate-startDate);
+    let miliseconds = () => {
+        let milisec = endDate.getMilliseconds() - startDate.getMilliseconds();
+        if (milisec == 0) return '000';
+        if (milisec < 100) return `0${milisec}`;
+        else return `${milisec}`;
+    };
+    let time = new Date(timeDuration);
+    return `${time.toUTCString().slice(-12,-4)}.${miliseconds()}`;
 }
 
 
@@ -117,7 +115,6 @@ function angleBetweenClockHands(date) {
         return (radiansBetweenHoursAndMin - 180) * Math.PI / 180;
     }
     return radiansBetweenHoursAndMin * Math.PI / 180;
-    throw new Error('Not implemented');
 }
 
 
