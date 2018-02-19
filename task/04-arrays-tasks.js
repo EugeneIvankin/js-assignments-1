@@ -39,12 +39,7 @@ function findElement(arr, value) {
  */
 function generateOdds(len) {
    let arr = Array(len).fill(0);
-   let x = 1;
-   return arr.map( () => {
-        const item = x;
-        x += 2;
-        return item;
-   }); 
+   return arr.map( (elem, index) => index + (index * 1) + 1); 
 }
 
 
@@ -91,7 +86,7 @@ function getArrayOfPositives(arr) {
  *    [ 'cat, 'dog', 'raccon' ] => [ 'cat', 'dog', 'racoon' ]
  */
 function getArrayOfStrings(arr) {
-   return arr.filter(elem => typeof elem == "string");
+   return arr.filter(elem => typeof elem === "string");
 }
 
 /**
@@ -108,10 +103,7 @@ function getArrayOfStrings(arr) {
  *    [ false, 0, NaN, '', undefined ]   => [ ]
  */
 function removeFalsyValues(arr) {
-    return arr.filter(elem => {
-        let boolElem = new Boolean(elem);
-        if (boolElem.valueOf) return elem;
-    }); 
+    return arr.filter(elem => elem); 
 }
 
 /**
@@ -248,14 +240,13 @@ function toArrayOfSquares(arr) {
  *   [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ] => [ 1, 3, 6, 10, 15, 21, 28, 36, 45, 55 ]
  */
 function getMovingSum(arr) {
-   let sumArr = [];
-   if (arr.length == 0) return sumArr;
-   let sumOnStep = arr.reduce((sum, item) => {
-       sumArr.push(sum);
-       return sum + item;
-   }); 
-   sumArr.push(sumOnStep);
-   return sumArr;
+    const rez = [];
+    arr.reduce((prev, cur) => {
+        const sum = prev + cur;
+        rez.push(sum);
+        return sum;
+    }, 0);
+    return rez;
 }
 
 /**
@@ -270,9 +261,7 @@ function getMovingSum(arr) {
  * [ "a" ] => []
  */
 function getSecondItems(arr) {
-    return arr.filter((elem, i) => {
-        if (i % 2) return true;
-    }); 
+    return arr.filter((elem, i) => i % 2); 
 }
 
 
@@ -336,13 +325,7 @@ function get3TopItems(arr) {
  *   [ 1, '2' ] => 1
  */
 function getPositivesCount(arr) {
-    let count = 0;
-    arr.map(elem => {
-        if (typeof elem == "number" && elem > 0) {
-            count++;
-        }
-    });
-    return count;
+    return arr.filter(elem => typeof elem == "number" && elem > 0).length;
 }
  
 /** 
@@ -375,11 +358,7 @@ function sortDigitNamesByNumericOrder(arr) {
  *   [ 1, 10, 100, 1000 ]  => 1111
  */
 function getItemsSum(arr) {
-    if (arr.length == 0){
-        return 0;
-    } 
-    let sum = (accum, elem) => accum + elem;
-    return arr.reduce(sum);
+    return arr.length && arr.reduce((accum, elem) => accum + elem);
 }
  
 /** 
@@ -395,12 +374,7 @@ function getItemsSum(arr) {
  *  [ null, undefined, NaN, false, 0, '' ]  => 6
  */
 function getFalsyValuesCount(arr) {
-    let countr = 0;
-    arr.map(elem => {
-        let boolElem = new Boolean(elem);
-        if (boolElem == false) countr++;
-    });
-    return countr;
+    return arr.filter(item => !item).length;
 }
 
 /**
@@ -418,11 +392,7 @@ function getFalsyValuesCount(arr) {
  *    [ true, 0, 1, 'true' ], true => 1
  */
 function findAllOccurences(arr, item) {
-    let countr = 0;
-    arr.map(elem => {
-        if (elem === item) countr++;
-    });
-    return countr;
+    return arr.filter(elem => elem === item).length;
 }
 
 /**
@@ -519,13 +489,13 @@ function getIdentityMatrix(n) {
  *     3, 3   => [ 3 ]
  */
 function getIntervalArray(start, end) {
-    let arrLength = end-start+1;
-    let arr = Array(arrLength).fill(1);
-    return arr.map((elem, i) => {
-        let x = elem*start;
-        start++;
-        return x;
-    });
+    const arrLength = end-start+1;
+    const arr = Array(arrLength).fill(0);
+    return(arr.map(elem => {
+	    elem = start;
+	    start++;
+	return elem;
+    }));
 }
 
 /**
@@ -541,7 +511,7 @@ function getIntervalArray(start, end) {
  */
 function distinct(arr) {
     let array = [];
-    arr.map(elem => {
+    arr.filter(elem => {
 	    if (array.indexOf(elem) == -1) array.push(elem);	
     });
     return array;

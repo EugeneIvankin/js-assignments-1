@@ -256,13 +256,7 @@ function encodeToRot13(str) {
  *   isString(new String('test')) => true
  */
 function isString(value) {
-    if (value === null || value === undefined){
-		return false;
-	}
-	else if (typeof value.valueOf() == "string") {
-		return true;
-	}
-	else return false;
+    return (value === null || value === undefined) ? false : (typeof value.valueOf() == "string") ? true : false;
 }
 
 
