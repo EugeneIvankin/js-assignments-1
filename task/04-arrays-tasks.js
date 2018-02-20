@@ -280,16 +280,15 @@ function getSecondItems(arr) {
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
  */
 function propagateItemsByPositionIndex(arr) {
-    /*let array = [];
+    let array = [];
     if (arr.length !== 0) {
-        console.log("input ", arr);
         arr.map((elem, index) => {
-            console.log("output ", array.concat(Array(index+1).fill(elem)));
-            return array.concat(Array(index+1).fill(elem));
-        });    
+            const arrayByElem = Array(index+1).fill(elem);
+            array = array.concat(arrayByElem);
+        }); 
+        return array;      
     }
-    return array;*/
-   throw new Error('Not implemented');
+    return array;
 }
 
 
@@ -342,7 +341,38 @@ function getPositivesCount(arr) {
  *   [ 'one','one','one','zero' ]     => [ 'zero','one','one','one' ]
  */
 function sortDigitNamesByNumericOrder(arr) {
-   throw new Error('Not implemented');
+    const stringToNumber = (elem) => {
+        if (elem == 'nine') return 9;
+        if (elem == 'eight') return 8;
+        if (elem == 'seven') return 7;
+        if (elem == 'six') return 6;
+        if (elem == 'five') return 5;
+        if (elem == 'four') return 4;
+        if (elem == 'three') return 3;
+        if (elem == 'two') return 2;
+        if (elem == 'one') return 1;
+        if (elem == 'zero') return 0;
+    };
+    const numberToString = (elem) => {
+        if (elem == 9) return 'nine';
+        if (elem == 8) return 'eight';
+        if (elem == 7) return 'seven';
+        if (elem == 6) return 'six';
+        if (elem == 5) return 'five';
+        if (elem == 4) return 'four';
+        if (elem == 3) return 'three';
+        if (elem == 2) return 'two';
+        if (elem == 1) return 'one';
+        if (elem == 0) return 'zero';
+    };
+
+    if (arr.length !==0) {
+        const arrayOfNumberFromString = arr.map(elem => stringToNumber(elem));
+        arrayOfNumberFromString.sort((a,b) => a-b);
+        const arrayOfStringFromNumber = arrayOfNumberFromString.map(elem => numberToString(elem));
+        return arrayOfStringFromNumber;
+    }
+    return arr;
 }
 
 /** 
@@ -548,6 +578,11 @@ function distinct(arr) {
  *   }
  */
 function group(array, keySelector, valueSelector) {
+    /*const arr = array.map(elem => {
+       return Array(keySelector(elem),valueSelector(elem));
+    });
+    const m = new Map(arr);
+    console.log(arr);*/
    throw new Error('Not implemented');
 }
 
@@ -587,7 +622,11 @@ function selectMany(arr, childrenSelector) {
  *   [[[ 1, 2, 3]]], [ 0, 0, 1 ]      => 2        (arr[0][0][1])
  */
 function getElementByIndexes(arr, indexes) {
-    throw new Error('Not implemented');
+    let a = arr;
+    indexes.map(elem => {
+        a = a[elem];
+    });
+    return a;
 }
 
 

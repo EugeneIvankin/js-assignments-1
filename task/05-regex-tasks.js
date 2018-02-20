@@ -31,6 +31,8 @@
  * @return {RegExp}
  */
 function getRegexForGuid() {
+    /*let re = /[A-Z]{8}\-[A-Z]{4}\-[A-Z]{4}\-[A-Z]{4}\-[A-Z]{12}/;
+    console.log(re.test('{D44EF4F4-280B47E5-91C7-261222A59621}'));*/
    throw new Error('Not implemented');
 }
 
